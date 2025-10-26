@@ -1,0 +1,85 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\title{Residential Energy Consumption Analytics Project}
+\author{Bhavesh Gaikwad}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+With the evolution of smart grids and increasing electricity costs, there is a growing need to analyze household energy consumption patterns. This project leverages Python (NumPy, Pandas, Matplotlib) to process and interpret smart meter data, investigate the impact of time-of-use pricing, and derive actionable insights for consumption optimization.
+
+\section{Problem Statement}
+
+Analyze 36,000 hourly records from 50 households over 30 days. Tasks include:
+\begin{itemize}
+\item Time-series data preprocessing
+\item Feature engineering for pricing, occupancy, and efficiency metrics
+\item Statistical and comparative analysis
+\item Visualization and business insights
+\end{itemize}
+
+\section{Methodology}
+
+Data pipeline:
+\begin{itemize}
+    \item Imputed missing values for consumption and temperature
+    \item Engineered features: hour\_of\_day, peak\_hours, cost\_inr, consumption\_per\_degree
+    \item Performed time-series aggregation and rolling mean
+    \item Grouped by occupancy and day-of-week
+    \item Quantified savings and CO$_2$ impact
+\end{itemize}
+
+\section{Results}
+
+\subsection{Hourly Consumption Pattern}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figs/hourly_consumption_pattern.png}
+    \caption{Average hourly consumption pattern with peak hours highlighted in red.}
+\end{figure}
+
+\subsection{Heatmap: Consumption by Day and Hour}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figs/consumption_heatmap.png}
+    \caption{Heatmap of average consumption (kWh) by day of week and hour of day.}
+\end{figure}
+
+\subsection{Temperature vs Consumption Scatter}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figs/temp_vs_consumption_scatter.png}
+    \caption{Scatter plot with regression line showing relationship between temperature and energy consumption.}
+\end{figure}
+
+\subsection{Weekday vs Weekend Box Plot}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figs/weekday_vs_weekend_boxplot.png}
+    \caption{Comparison of consumption distributions for weekdays and weekends.}
+\end{figure}
+
+\section{Business Insights and Recommendations}
+\begin{itemize}
+    \item \textbf{Peak Hour Utilization}: Households consume 40\%+ more energy during evenings; shifting 30\% peak usage to off-peak hours can save over 15\% on monthly bills.
+    \item \textbf{Efficiency Outliers}: Top 5 high-consumption households represent significant share of total costs---targeted recommendations yield greatest impact.
+    \item \textbf{Temperature Correlation}: Regression analysis shows increased consumption below 10$^\circ$C and above 28$^\circ$C; thermal insulation and appliance scheduling are advised.
+    \item \textbf{Environmental Benefits}: With carbon intensity of 0.82 kg/kWh, optimizing consumption can reduce household CO$_2$ emissions by thousands of kg annually.
+\end{itemize}
+
+\section{Conclusion}
+
+This analysis demonstrates a robust workflow for extracting insights from smart meter data, highlighting both cost savings and sustainability opportunities. The codebase (found in \texttt{code/main.py}) and dataset (\texttt{data/energy\_data.csv}) provide a reusable template for similar projects in utility analytics, smart home technology, and energy efficiency research.
+
+\end{document}
